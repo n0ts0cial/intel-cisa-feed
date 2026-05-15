@@ -3,10 +3,18 @@ function Get-SpecificDateVulnerabilities {
         [string]$TargetDate = $((Get-Date).AddDays(-1).ToString("yyyy-MM-dd"))
     )
 
-    # --- DOWNLOAD LOGIC (CISA CSV) ---
+    # --- DIRECTORY AND PATH SETUP ---
+    $ReportsFolder = Join-Path -Path $PSScriptRoot -ChildPath "reports"
     $CisaUrl = "https://www.cisa.gov/sites/default/files/csv/known_exploited_vulnerabilities.csv"
     $CsvFile = Join-Path -Path $PSScriptRoot -ChildPath "known_exploited_vulnerabilities.csv"
 
+    # Check if reports directory exists, create it if not
+    if (-not (Test-Path -Path $ReportsFolder)) {
+        Write-Host "INFO: Creating reports directory..." -ForegroundColor Cyan
+        New-Item -Path $ReportsFolder -ItemType Directory | Out-Null
+    }
+
+    # --- DOWNLOAD LOGIC (CISA CSV) ---
     Write-Host "INFO: Downloading latest KEV catalog from CISA..." -ForegroundColor Cyan
     try {
         if (Test-Path -Path $CsvFile) {
@@ -83,8 +91,8 @@ function Get-SpecificDateVulnerabilities {
             }
         }
 
-        # --- 6. GENERATE MARKDOWN FILE (STRICT ORDER) ---
-        $MarkdownPath = Join-Path -Path $PSScriptRoot -ChildPath "$TargetDate.md"
+        # --- 6. GENERATE MARKDOWN FILE (INSIDE REPORTS FOLDER) ---
+        $MarkdownPath = Join-Path -Path $ReportsFolder -ChildPath "$TargetDate.md"
         $MarkdownContent = New-Object System.Collections.Generic.List[string]
         $MarkdownContent.Add("# Vulnerability Report: $TargetDate")
         $MarkdownContent.Add("")
@@ -101,7 +109,6 @@ function Get-SpecificDateVulnerabilities {
             foreach ($Field in $ExportFields) {
                 $Val = $Item.$Field
                 if ($null -ne $Val -and $Val -ne "") {
-                    # Wrapped variable in ${} to prevent drive-reference errors with the colon
                     $MarkdownContent.Add("**${Field}:** $Val`n")
                 }
             }
