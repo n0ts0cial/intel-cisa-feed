@@ -100,8 +100,9 @@ function Get-SpecificDateVulnerabilities {
         # Explicit field list in the required order
         $ExportFields = @(
             "cveID", "vendorProject", "product", "vulnerabilityName", 
-            "dateAdded", "baseSeverity", "baseScore", "exploitabilityScore", 
-            "impactScore", "hasPublicExploit", "requiredAction", "nistReferences"
+            "shortDescription", "dateAdded", "baseSeverity", "baseScore", 
+            "exploitabilityScore", "impactScore", "hasPublicExploit", 
+            "requiredAction", "nistReferences"
         )
 
         foreach ($Item in $FilteredVulnerabilities) {
@@ -127,5 +128,5 @@ function Get-SpecificDateVulnerabilities {
 }
 
 # --- EXECUTION ---
-# This will now run for "yesterday" every time the script is called
+# This runs for "yesterday" by default, perfect for the GitHub Action schedule
 Get-SpecificDateVulnerabilities
