@@ -27,17 +27,16 @@ jobs:
 
       - name: Commit and Push Report
         run: |
-          # Configure GitHub Actions bot user identity
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          # Stage the new files created in the reports directory
+          # Stage only the generated reports
           git add reports/*.md
           
-          # Commit only if there are changes (prevents errors when no new vulnerabilities are found)
-          if [ -n "$(git status --porcelain)" ]; then
-            git commit -m "Auto-generated vulnerability report for $(date +%F)"
-            git push
+          # Use diff --cached to check if there are actual files in the staging area
+          if git diff --cached --quiet; then
+            echo "No new reports found. Nothing to commit."
           else
-            echo "No changes to commit"
+            git commit -m "Publish automated vulnerability intelligence reports"
+            git push
           fi
