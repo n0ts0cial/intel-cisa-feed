@@ -86,7 +86,7 @@ Plaintext
 ```
 
 ## 👤 Author
-
 **Bruno Ricci**
+*Cybersecurity Specialist | Technical Author*  
 - **Website:** [techexpert.tips](https://techexpert.tips)
 - **LinkedIn:** [linkedin.com/in/brunoricci/](https://www.linkedin.com/in/brunoricci/)
