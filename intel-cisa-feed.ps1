@@ -128,4 +128,4 @@ function Get-SpecificDateVulnerabilities {
 
 # --- EXECUTION ---
 Get-SpecificDateVulnerabilities -TargetDate "2024-05-14"
-Get-SpecificDateVulnerabilities -TargetDate "2026-05-15"
+Get-SpecificDateVulnerabilities -TargetDate "2026-05-15" 
