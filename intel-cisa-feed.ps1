@@ -102,7 +102,7 @@ function Get-SpecificDateVulnerabilities {
             "cveID", "vendorProject", "product", "vulnerabilityName", 
             "shortDescription", "dateAdded", "baseSeverity", "baseScore", 
             "exploitabilityScore", "impactScore", "hasPublicExploit", 
-            "requiredAction", "nistReferences"
+            "requiredAction", "notes", "nistReferences"
         )
 
         foreach ($Item in $FilteredVulnerabilities) {
@@ -128,5 +128,4 @@ function Get-SpecificDateVulnerabilities {
 }
 
 # --- EXECUTION ---
-# This runs for "yesterday" by default, perfect for the GitHub Action schedule
 Get-SpecificDateVulnerabilities
