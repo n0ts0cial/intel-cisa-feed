@@ -3,14 +3,33 @@ function Get-SpecificDateVulnerabilities {
         [string]$TargetDate = $((Get-Date).AddDays(-1).ToString("yyyy-MM-dd"))
     )
 
-    # 1. Path and CSV Import with File Check
+    # --- AUTOMATIC DOWNLOAD LOGIC ---
+    $CisaUrl = "https://www.cisa.gov/sites/default/files/csv/known_exploited_vulnerabilities.csv"
     $CsvFile = Join-Path -Path $PSScriptRoot -ChildPath "known_exploited_vulnerabilities.csv"
 
+    $NeedsDownload = $false
     if (-not (Test-Path -Path $CsvFile)) {
-        Write-Error "CRITICAL: The file '$CsvFile' was not found."
-        return
+        Write-Host "INFO: CSV file not found locally. Starting download from CISA..." -ForegroundColor Cyan
+        $NeedsDownload = $true
+    } 
+    elseif ((Get-Item $CsvFile).LastWriteTime -lt (Get-Date).AddDays(-1)) {
+        Write-Host "INFO: Local CSV is outdated. Refreshing from CISA..." -ForegroundColor Cyan
+        $NeedsDownload = $true
     }
 
+    if ($NeedsDownload) {
+        try {
+            Invoke-WebRequest -Uri $CisaUrl -OutFile $CsvFile -ErrorAction Stop
+            Write-Host "SUCCESS: CISA KEV catalog updated." -ForegroundColor Green
+        }
+        catch {
+            Write-Error "CRITICAL: Failed to download CISA catalog. Error: $($_.Exception.Message)"
+            if (-not (Test-Path -Path $CsvFile)) { return } 
+            Write-Warning "Attempting to proceed with existing local file..."
+        }
+    }
+
+    # 1. Path and CSV Import
     try {
         $RawVulnerabilities = Import-Csv -Path $CsvFile -ErrorAction Stop | Select-Object `
             cveID, vendorProject, dateAdded, product, vulnerabilityName, `
@@ -68,7 +87,7 @@ function Get-SpecificDateVulnerabilities {
                 $EnglishDesc = if ($null -ne $RawDesc) { $RawDesc } else { "No description available." }
                 $Vuln | Add-Member -MemberType NoteProperty -Name "nistDescription" -Value $EnglishDesc -Force
 
-                # CVSS Metrics (5.1 Compatible)
+                # CVSS Metrics
                 $Cvss = $null
                 if ($CveObj.metrics.cvssMetricV31) { $Cvss = $CveObj.metrics.cvssMetricV31[0] }
                 elseif ($CveObj.metrics.cvssMetricV30) { $Cvss = $CveObj.metrics.cvssMetricV30[0] }
@@ -97,7 +116,6 @@ function Get-SpecificDateVulnerabilities {
             }
         }
 
-        # 6. Final Output
         return $FilteredVulnerabilities
     }
     catch {
@@ -105,28 +123,22 @@ function Get-SpecificDateVulnerabilities {
     }
 }
 
-# --- EXAMPLES OF HOW TO USE THE FUNCTION ---
+# --- EXECUTION ---
+# Example: Getting vulnerabilities for a specific date
+$Results = Get-SpecificDateVulnerabilities -TargetDate "2024-05-14"
 
-# Usage 1: Get yesterday's vulnerabilities (Default)
-$Results = Get-SpecificDateVulnerabilities("2026-04-28")
-#$Results | Format-List cveID, vendorProject, product, baseScore, hasPublicExploit, nistDescription, nistReferences
-$Results | Format-List `
-    cveID, 
-    vendorProject, 
-    product, 
-    vulnerabilityName, 
-    dateAdded, 
-    vulnStatus, 
-    baseScore, 
-    baseSeverity, 
-    vectorString, 
-    exploitabilityScore, 
-    impactScore, 
-    hasPublicExploit,
-    nistDescription, 
-    requiredAction, 
-    nistConfigDetails,
-    nistReferences
-
-# Usage 2: Get vulnerabilities for a specific date
-# Get-SpecificDateVulnerabilities -TargetDate "2026-05-10" | Format-Table cveID, product, baseSeverity
+if ($Results) {
+    $Results | Format-List `
+        cveID, 
+        vendorProject, 
+        product, 
+        vulnerabilityName, 
+        dateAdded, 
+        vulnStatus, 
+        baseScore, 
+        baseSeverity, 
+        hasPublicExploit,
+        nistDescription, 
+        requiredAction, 
+        nistReferences
+}
