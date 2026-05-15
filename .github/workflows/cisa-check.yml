@@ -18,7 +18,7 @@ jobs:
       - name: Run Vulnerability Script
         shell: pwsh
         run: |
-          # Importa e executa a função
+          # Importa e executa a função (certifique-se que a chamada da função está no fim do .ps1)
           . ./intel-cisa-feed.ps1
 
       - name: Commit and Push Report
@@ -27,14 +27,13 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          # Adiciona apenas os novos arquivos .md criados
-          git add *.md
+          # ALTERAÇÃO AQUI: Adiciona a pasta reports e os arquivos dentro dela
+          git add reports/*.md
           
-          # Commita se houver alterações (evita erro se não houver vulnerabilidades no dia)
+          # Commita se houver alterações
           if [ -n "$(git status --porcelain)" ]; then
             git commit -m "Auto-generated vulnerability report for $(date +%F)"
             git push
           else
             echo "No changes to commit"
           fi
-
