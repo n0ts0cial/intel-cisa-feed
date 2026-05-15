@@ -19,4 +19,4 @@ jobs:
         shell: pwsh
         run: |
           # Importa a função e executa
-          . ./seu_arquivo_do_script.ps1
+          . ./intel-cisa-feed.ps1
