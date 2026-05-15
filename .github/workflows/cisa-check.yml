@@ -1,13 +1,17 @@
 name: Check CISA Vulnerabilities
 
 on:
+  # Automated schedule: Runs every day at 03:00 AM UTC
+  schedule:
+    - cron: '0 3 * * *'
+  # Allows manual triggering from the Actions tab
   workflow_dispatch:
-  
+
 jobs:
   run-script:
     runs-on: ubuntu-latest
 
-    # Permissões necessárias para o bot do GitHub poder escrever no repositório
+    # Required permissions for the GitHub Actions bot to write to the repository
     permissions:
       contents: write
 
@@ -18,19 +22,19 @@ jobs:
       - name: Run Vulnerability Script
         shell: pwsh
         run: |
-          # Importa e executa a função (certifique-se que a chamada da função está no fim do .ps1)
+          # Import and execute the script (ensure function call is at the end of the .ps1)
           . ./intel-cisa-feed.ps1
 
       - name: Commit and Push Report
         run: |
-          # Configura o usuário do bot do GitHub
+          # Configure GitHub Actions bot user identity
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          # ALTERAÇÃO AQUI: Adiciona a pasta reports e os arquivos dentro dela
+          # Stage the new files created in the reports directory
           git add reports/*.md
           
-          # Commita se houver alterações
+          # Commit only if there are changes (prevents errors when no new vulnerabilities are found)
           if [ -n "$(git status --porcelain)" ]; then
             git commit -m "Auto-generated vulnerability report for $(date +%F)"
             git push
