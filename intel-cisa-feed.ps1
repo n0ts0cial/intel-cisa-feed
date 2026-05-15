@@ -3,28 +3,28 @@ function Get-SpecificDateVulnerabilities {
         [string]$TargetDate = $((Get-Date).AddDays(-1).ToString("yyyy-MM-dd"))
     )
 
-    # --- UNIVERSAL DOWNLOAD LOGIC (CISA CSV) ---
+    # --- DOWNLOAD LOGIC (CISA CSV) ---
     $CisaUrl = "https://www.cisa.gov/sites/default/files/csv/known_exploited_vulnerabilities.csv"
     $CsvFile = Join-Path -Path $PSScriptRoot -ChildPath "known_exploited_vulnerabilities.csv"
 
     Write-Host "INFO: Downloading latest KEV catalog from CISA..." -ForegroundColor Cyan
     try {
-        # Manually remove existing CSV to ensure a fresh download (Compatible with PS 5.1 and 7+)
         if (Test-Path -Path $CsvFile) {
             Remove-Item -Path $CsvFile -Force -ErrorAction SilentlyContinue
         }
-        
-        # Download the file
         Invoke-WebRequest -Uri $CisaUrl -OutFile $CsvFile -ErrorAction Stop
-        Write-Host "SUCCESS: CISA KEV catalog updated and overwritten." -ForegroundColor Green
+        Write-Host "SUCCESS: CISA KEV catalog updated." -ForegroundColor Green
     }
     catch {
-        Write-Error "CRITICAL: Failed to download CISA catalog. Error: $($_.Exception.Message)"
-        if (-not (Test-Path -Path $CsvFile)) { return } 
-        Write-Warning "Proceeding with existing local file as fallback..."
+        Write-Warning "Could not download fresh CISA catalog. Using local file if available."
     }
 
     # 1. CSV Import
+    if (-not (Test-Path -Path $CsvFile)) {
+        Write-Error "CRITICAL: The file '$CsvFile' was not found."
+        return
+    }
+
     try {
         $RawVulnerabilities = Import-Csv -Path $CsvFile -ErrorAction Stop | Select-Object `
             cveID, vendorProject, dateAdded, product, vulnerabilityName, `
@@ -43,25 +43,25 @@ function Get-SpecificDateVulnerabilities {
         return
     }
 
-    # 3. NIST API Enrichment
+    # 3. Prepare Batch Query for NIST API
     $CveIdsString = ($FilteredVulnerabilities.cveID) -join ","
     $ApiUrl = "https://services.nvd.nist.gov/rest/json/cves/2.0?cveIds=$CveIdsString"
 
-    Write-Host "Fetching enrichment data for: $TargetDate" -ForegroundColor Cyan
+    Write-Host "INFO: Fetching enrichment data for: $TargetDate" -ForegroundColor Cyan
 
+    # 4. API Request
     try {
         $NistResponse = Invoke-RestMethod -Uri $ApiUrl -Method Get -TimeoutSec 30 -ErrorAction Stop
         $NistVulnerabilities = $NistResponse.vulnerabilities
 
-        $FinalList = New-Object System.Collections.Generic.List[PSObject]
-
+        # 5. Enrichment Loop
         foreach ($Vuln in $FilteredVulnerabilities) {
             $NistData = $NistVulnerabilities | Where-Object { $_.cve.id -eq $Vuln.cveID }
             
             if ($NistData) {
                 $CveObj = $NistData.cve
                 
-                # Exploit Check
+                # Check for Public PoC/Exploit tags
                 $HasPoc = "No"
                 if ($CveObj.references | Where-Object { $_.tags -contains "Exploit" }) {
                     $HasPoc = "Yes (Found in NIST Reference Tags)"
@@ -76,49 +76,48 @@ function Get-SpecificDateVulnerabilities {
                 if ($null -ne $Cvss) {
                     $Vuln | Add-Member -MemberType NoteProperty -Name "baseScore" -Value $Cvss.cvssData.baseScore -Force
                     $Vuln | Add-Member -MemberType NoteProperty -Name "baseSeverity" -Value $Cvss.cvssData.baseSeverity -Force
+                    $Vuln | Add-Member -MemberType NoteProperty -Name "exploitabilityScore" -Value $Cvss.exploitabilityScore -Force
+                    $Vuln | Add-Member -MemberType NoteProperty -Name "impactScore" -Value $Cvss.impactScore -Force
                 }
-
-                $RawDesc = $CveObj.descriptions | Where-Object lang -eq "en" | Select-Object -ExpandProperty value -First 1
-                $Vuln | Add-Member -MemberType NoteProperty -Name "nistDescription" -Value $RawDesc -Force
                 $Vuln | Add-Member -MemberType NoteProperty -Name "nistReferences" -Value ($CveObj.references.url -join " | ") -Force
             }
-            $FinalList.Add($Vuln)
         }
 
-        # --- GENERATE/OVERWRITE MARKDOWN FILE ($TargetDate.md) ---
+        # --- 6. GENERATE MARKDOWN FILE (STRICT ORDER) ---
         $MarkdownPath = Join-Path -Path $PSScriptRoot -ChildPath "$TargetDate.md"
-        
-        # Ensure fresh rewrite
-        if (Test-Path -Path $MarkdownPath) {
-            Remove-Item -Path $MarkdownPath -Force -ErrorAction SilentlyContinue
-        }
-
         $MarkdownContent = New-Object System.Collections.Generic.List[string]
         $MarkdownContent.Add("# Vulnerability Report: $TargetDate")
         $MarkdownContent.Add("")
 
-        foreach ($Item in $FinalList) {
-            $MarkdownContent.Add("---") 
-            foreach ($Prop in $Item.PSObject.Properties) {
-                if ($null -ne $Prop.Value -and $Prop.Value -ne "") {
-                    # Key in BOLD, Value normal
-                    $MarkdownContent.Add("**$($Prop.Name):** $($Prop.Value)")
+        # Explicit field list in the required order
+        $ExportFields = @(
+            "cveID", "vendorProject", "product", "vulnerabilityName", 
+            "dateAdded", "baseSeverity", "baseScore", "exploitabilityScore", 
+            "impactScore", "hasPublicExploit", "requiredAction", "nistReferences"
+        )
+
+        foreach ($Item in $FilteredVulnerabilities) {
+            $MarkdownContent.Add("---")
+            foreach ($Field in $ExportFields) {
+                $Val = $Item.$Field
+                if ($null -ne $Val -and $Val -ne "") {
+                    # Wrapped variable in ${} to prevent drive-reference errors with the colon
+                    $MarkdownContent.Add("**${Field}:** $Val`n")
                 }
             }
-            $MarkdownContent.Add("")
+            $MarkdownContent.Add("") 
         }
 
-        # Out-File with -Force and UTF8
+        # Save as UTF8
         $MarkdownContent | Out-File -FilePath $MarkdownPath -Encoding utf8 -Force
-        Write-Host "REPORT CREATED/OVERWRITTEN: $MarkdownPath" -ForegroundColor Green
+        Write-Host "SUCCESS: Report generated at $MarkdownPath" -ForegroundColor Green
 
-        return $FinalList
+        return $FilteredVulnerabilities
     }
     catch {
-        Write-Error "An error occurred during processing: $($_.Exception.Message)"
+        Write-Error "An error occurred: $($_.Exception.Message)"
     }
 }
 
-# --- RUN EXECUTION ---
-# You can change the date below as needed
+# --- EXECUTION ---
 Get-SpecificDateVulnerabilities -TargetDate "2024-05-14"
