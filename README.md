@@ -7,22 +7,16 @@ Automated Threat Intelligence tool that monitors, enriches, and reports on the l
 This project provides an automated pipeline to track active threats. Every day, a GitHub Action triggers a PowerShell script that:
 
 1. **Fetches** the latest KEV catalog from CISA.
-    
 2. **Filters** data by specific date, month, or custom range.
-    
 3. **Enriches** the data by querying the **NIST National Vulnerability Database (NVD) API** to retrieve CVSS scores, severity levels, and public exploit references.
-    
 4. **Generates** clean Markdown reports in the `reports/` directory with an executive summary and technical details.
     
 
 ## 🛠️ Technology Stack
 
 - **Language:** PowerShell (Core)
-    
 - **Automation:** GitHub Actions (CI/CD)
-    
 - **Data Sources:** CISA KEV Catalog & NIST NVD API
-    
 - **Output:** Markdown (.md) reports
     
 
@@ -34,8 +28,6 @@ The script `Intel-CISA-Feed.ps1` supports the following reporting modes:
 
 Checks for vulnerabilities added on a specific date (default: yesterday).
 
-PowerShell
-
 ```
 Get-SpecificDateVulnerabilities -TargetDate "2026-05-10"
 ```
@@ -44,8 +36,6 @@ Get-SpecificDateVulnerabilities -TargetDate "2026-05-10"
 
 Aggregates all vulnerabilities added during a specific month.
 
-PowerShell
-
 ```
 Get-SpecificMonthVulnerabilities -TargetMonth "2026-04"
 ```
@@ -53,8 +43,6 @@ Get-SpecificMonthVulnerabilities -TargetMonth "2026-04"
 ### Custom Range
 
 Generates a report between two specific dates.
-
-PowerShell
 
 ```
 Get-VulnerabilitiesByRange -StartDate "2026-05-01" -EndDate "2026-05-15"
@@ -65,25 +53,15 @@ Get-VulnerabilitiesByRange -StartDate "2026-05-01" -EndDate "2026-05-15"
 Each report includes an **Executive Summary** table (Severity counts) and detailed findings with:
 
 - `cveID`: The standard CVE identifier.
-    
 - `vendorProject` & `product`: Affected software or hardware.
-    
 - `vulnerabilityName`: Brief title of the flaw.
-    
 - `shortDescription`: Context on how the vulnerability works.
-    
 - `dateAdded`: When it was officially added to the KEV.
-    
 - `baseSeverity` & `baseScore`: CVSS v3.x risk metrics.
-    
 - `exploitabilityScore` & `impactScore`: Technical breakdown of the risk.
-    
 - `hasPublicExploit`: Identification of public PoCs or exploit code.
-    
 - `requiredAction`: CISA's recommended mitigation steps.
-    
 - `notes`: Additional context or ransomware campaign association.
-    
 - `nistReferences`: Direct links to official security advisories.
     
 
@@ -92,7 +70,6 @@ Each report includes an **Executive Summary** table (Severity counts) and detail
 The feed is configured to run automatically via GitHub Actions:
 
 - **Schedule:** Daily at `03:00 AM UTC`.
-    
 - **Manual Trigger:** Can be executed via `workflow_dispatch`.
     
 
@@ -111,7 +88,5 @@ Plaintext
 ## 👤 Author
 
 **Bruno Ricci**
-
 - **Website:** [techexpert.tips](https://techexpert.tips)
-    
 - **LinkedIn:** [linkedin.com/in/brunoricci/](https://www.linkedin.com/in/brunoricci/)
