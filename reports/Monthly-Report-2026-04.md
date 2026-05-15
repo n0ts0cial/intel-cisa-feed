@@ -1,7 +1,54 @@
-# Monthly Summary: 2026-04
+# Monthly Vulnerability Summary: 2026-04
+
+These vulnerabilities have been added to the CISA Known Exploited Vulnerabilities (KEV) Catalog.
+
+## Executive Summary
+This section provides a high-level overview of the vulnerabilities recently identified and added to the CISA Known Exploited Vulnerabilities (KEV) catalog. The table below summarizes the critical metrics and the overall risk landscape for this reporting period.
+
+| Metric | Value |
+| :--- | :--- |
+| **Total Vulnerabilities** | 31 |
+| **Critical Severity** | 7 |
+| **High Severity** | 19 |
+| **Medium Severity** | 5 |
+| **Low Severity** | 0 |
+| **Public Exploit (PoC) Available** | 8 |
+
+### Affected Products
+Here is the list of affected products included in this report:
+
+* Acrobat
+* Acrobat and Reader
+* ActiveMQ
+* Catalyst SD-WAN Manager
+* Catalyst SD-WAN Manger
+* Client
+* cPanel & WHM and WP2 (WordPress Squared)
+* Dawn
+* Defender
+* DIR-823X
+* Endpoint Manager Mobile (EPMM)
+* Exchange Server
+* FortiClient EMS
+* KACE Systems Management Appliance (SMA)
+* Kentico Xperience
+* MagicINFO 9 Server
+* Marimo
+* NG/MF
+* Office
+* ScreenConnect
+* SharePoint Server
+* SimpleHelp
+* TeamCity
+* Visual Basic for Applications (VBA)
+* Windows
+* Zimbra Collaboration Suite (ZCS)
+
+## Detailed Findings
+Technical details for each identified CVE, including product impact, CVSS enrichment from the NIST NVD, and specific required actions.
 
 ---
-**cveID:** CVE-2026-41940
+### cveID: CVE-2026-41940
 
 **vendorProject:** WebPros
 
@@ -30,7 +77,7 @@
 **nistReferences:** https://docs.cpanel.net/release-notes/release-notes | https://docs.wpsquared.com/changelogs/versions/changelog/#13617 | https://support.cpanel.net/hc/en-us/articles/40073787579671-cPanel-WHM-Security-Update-04-28-2026 | https://www.namecheap.com/status-updates/ongoing-critical-security-vulnerability-in-cpanel-april-28-2026 | https://www.vulncheck.com/advisories/cpanel-and-whm-authentication-bypass-via-login-flow | https://labs.watchtowr.com/the-internet-is-falling-down-falling-down-falling-down-cpanel-whm-authentication-bypass-cve-2026-41940/ | https://www.bleepingcomputer.com/news/security/critrical-cpanel-flaw-mass-exploited-in-sorry-ransomware-attacks/ | https://github.com/watchtowrlabs/watchTowr-vs-cPanel-WHM-AuthBypass-to-RCE.py | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-41940
 
 ---
-**cveID:** CVE-2024-1708
+### cveID: CVE-2024-1708
 
 **vendorProject:** ConnectWise
 
@@ -59,7 +106,7 @@
 **nistReferences:** https://www.connectwise.com/company/trust/security-bulletins/connectwise-screenconnect-23.9.8 | https://www.huntress.com/blog/a-catastrophe-for-control-understanding-the-screenconnect-authentication-bypass | https://www.connectwise.com/company/trust/security-bulletins/connectwise-screenconnect-23.9.8 | https://www.huntress.com/blog/a-catastrophe-for-control-understanding-the-screenconnect-authentication-bypass | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2024-1708 | https://www.microsoft.com/en-us/security/blog/2026/04/06/storm-1175-focuses-gaze-on-vulnerable-web-facing-assets-in-high-tempo-medusa-ransomware-operations/
 
 ---
-**cveID:** CVE-2026-32202
+### cveID: CVE-2026-32202
 
 **vendorProject:** Microsoft
 
@@ -88,7 +135,7 @@
 **nistReferences:** https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-32202 | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-32202
 
 ---
-**cveID:** CVE-2025-29635
+### cveID: CVE-2025-29635
 
 **vendorProject:** D-Link
 
@@ -117,7 +164,7 @@
 **nistReferences:** https://github.com/mono7s/Dir-823x/blob/main/set_prohibiting/set_prohibiting.md | https://www.akamai.com/blog/security-research/2026/apr/cve-2025-29635-mirai-campaign-targets-d-link-devices | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2025-29635
 
 ---
-**cveID:** CVE-2024-7399
+### cveID: CVE-2024-7399
 
 **vendorProject:** Samsung
 
@@ -146,7 +193,7 @@
 **nistReferences:** https://security.samsungtv.com/securityUpdates | https://arcticwolf.com/resources/blog-uk/arctic-wolf-observes-exploitation-of-path-traversal-vulnerability-in-samsung-magicinfo-9-server-cve-2024-7399/ | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2024-7399
 
 ---
-**cveID:** CVE-2024-57728
+### cveID: CVE-2024-57728
 
 **vendorProject:** SimpleHelp 
 
@@ -175,7 +222,7 @@
 **nistReferences:** https://simple-help.com/kb---security-vulnerabilities-01-2025#security-vulnerabilities-in-simplehelp-5-5-7-and-earlier | https://www.horizon3.ai/attack-research/disclosures/critical-vulnerabilities-in-simplehelp-remote-support-software/ | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2024-57728 | https://www.microsoft.com/en-us/security/blog/2026/04/06/storm-1175-focuses-gaze-on-vulnerable-web-facing-assets-in-high-tempo-medusa-ransomware-operations/ | https://www.trendmicro.com/vinfo/us/security/news/ransomware-spotlight/ransomware-spotlight-dragonforce
 
 ---
-**cveID:** CVE-2024-57726
+### cveID: CVE-2024-57726
 
 **vendorProject:** SimpleHelp 
 
@@ -204,7 +251,7 @@
 **nistReferences:** https://simple-help.com/kb---security-vulnerabilities-01-2025#security-vulnerabilities-in-simplehelp-5-5-7-and-earlier | https://www.horizon3.ai/attack-research/disclosures/critical-vulnerabilities-in-simplehelp-remote-support-software/ | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2024-57726 | https://www.microsoft.com/en-us/security/blog/2026/04/06/storm-1175-focuses-gaze-on-vulnerable-web-facing-assets-in-high-tempo-medusa-ransomware-operations/ | https://www.trendmicro.com/vinfo/us/security/news/ransomware-spotlight/ransomware-spotlight-dragonforce
 
 ---
-**cveID:** CVE-2026-39987
+### cveID: CVE-2026-39987
 
 **vendorProject:** Marimo
 
@@ -233,7 +280,7 @@
 **nistReferences:** https://github.com/marimo-team/marimo/commit/c24d4806398f30be6b12acd6c60d1d7c68cfd12a | https://github.com/marimo-team/marimo/pull/9098 | https://github.com/marimo-team/marimo/security/advisories/GHSA-2679-6mx9-h9xc | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-39987 | https://www.sysdig.com/blog/marimo-oss-python-notebook-rce-from-disclosure-to-exploitation-in-under-10-hours
 
 ---
-**cveID:** CVE-2026-33825
+### cveID: CVE-2026-33825
 
 **vendorProject:** Microsoft
 
@@ -262,7 +309,7 @@
 **nistReferences:** https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-33825 | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-33825 | https://www.huntress.com/blog/nightmare-eclipse-intrusion
 
 ---
-**cveID:** CVE-2026-20122
+### cveID: CVE-2026-20122
 
 **vendorProject:** Cisco
 
@@ -291,7 +338,7 @@
 **nistReferences:** https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-sdwan-authbp-qwCX8D4v | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-20122
 
 ---
-**cveID:** CVE-2026-20133
+### cveID: CVE-2026-20133
 
 **vendorProject:** Cisco
 
@@ -320,7 +367,7 @@
 **nistReferences:** https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-sdwan-authbp-qwCX8D4v | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-20133
 
 ---
-**cveID:** CVE-2025-2749
+### cveID: CVE-2025-2749
 
 **vendorProject:** Kentico
 
@@ -349,7 +396,7 @@
 **nistReferences:** https://devnet.kentico.com/download/hotfixes | https://labs.watchtowr.com/bypassing-authentication-like-its-the-90s-pre-auth-rce-chain-s-in-kentico-xperience-cms/ | https://www.vulncheck.com/advisories/kentico-xperience-staging-media-file-upload-authenticated-rce | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2025-2749
 
 ---
-**cveID:** CVE-2023-27351
+### cveID: CVE-2023-27351
 
 **vendorProject:** PaperCut
 
@@ -378,7 +425,7 @@
 **nistReferences:** https://www.papercut.com/kb/Main/PO-1216-and-PO-1219 | https://www.zerodayinitiative.com/advisories/ZDI-23-232/ | https://www.papercut.com/kb/Main/PO-1216-and-PO-1219 | https://www.zerodayinitiative.com/advisories/ZDI-23-232/ | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2023-27351
 
 ---
-**cveID:** CVE-2025-48700
+### cveID: CVE-2025-48700
 
 **vendorProject:** Synacor
 
@@ -407,7 +454,7 @@
 **nistReferences:** https://wiki.zimbra.com/wiki/Security_Center | https://wiki.zimbra.com/wiki/Zimbra_Responsible_Disclosure_Policy | https://wiki.zimbra.com/wiki/Zimbra_Security_Advisories | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2025-48700
 
 ---
-**cveID:** CVE-2026-20128
+### cveID: CVE-2026-20128
 
 **vendorProject:** Cisco
 
@@ -436,7 +483,7 @@
 **nistReferences:** https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-sdwan-authbp-qwCX8D4v | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-20128
 
 ---
-**cveID:** CVE-2025-32975
+### cveID: CVE-2025-32975
 
 **vendorProject:** Quest
 
@@ -465,7 +512,7 @@
 **nistReferences:** https://seclists.org/fulldisclosure/2025/Jun/22 | https://seralys.com/research/CVE-2025-32975.txt | https://support.quest.com/kb/4379499/quest-response-to-kace-sma-vulnerabilities-cve-2025-32975-cve-2025-32976-cve-2025-32977-cve-2025-32978 | http://seclists.org/fulldisclosure/2025/Jun/25 | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2025-32975
 
 ---
-**cveID:** CVE-2024-27199
+### cveID: CVE-2024-27199
 
 **vendorProject:** JetBrains
 
@@ -494,7 +541,7 @@
 **nistReferences:** https://www.darkreading.com/cyberattacks-data-breaches/jetbrains-teamcity-mass-exploitation-underway-rogue-accounts-thrive | https://www.jetbrains.com/privacy-security/issues-fixed/ | https://www.darkreading.com/cyberattacks-data-breaches/jetbrains-teamcity-mass-exploitation-underway-rogue-accounts-thrive | https://www.jetbrains.com/privacy-security/issues-fixed/ | https://github.com/Stuub/RCity-CVE-2024-27198/blob/main/RCity.py | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2024-27199
 
 ---
-**cveID:** CVE-2026-34197
+### cveID: CVE-2026-34197
 
 **vendorProject:** Apache
 
@@ -523,7 +570,7 @@
 **nistReferences:** https://activemq.apache.org/security-advisories.data/CVE-2026-34197-announcement.txt | http://www.openwall.com/lists/oss-security/2026/04/06/3 | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-34197
 
 ---
-**cveID:** CVE-2009-0238
+### cveID: CVE-2009-0238
 
 **vendorProject:** Microsoft
 
@@ -552,7 +599,7 @@
 **nistReferences:** http://blogs.zdnet.com/security/?p=2658 | http://isc.sans.org/diary.html?storyid=5923 | http://securitytracker.com/id?1021744 | http://www.microsoft.com/technet/security/advisory/968272.mspx | http://www.securityfocus.com/bid/33870 | http://www.symantec.com/business/security_response/writeup.jsp?docid=2009-022310-4202-99 | http://www.us-cert.gov/cas/techalerts/TA09-104A.html | http://www.vupen.com/english/advisories/2009/1023 | https://docs.microsoft.com/en-us/security-updates/securitybulletins/2009/ms09-009 | https://exchange.xforce.ibmcloud.com/vulnerabilities/48875 | https://oval.cisecurity.org/repository/search/definition/oval%3Aorg.mitre.oval%3Adef%3A5968 | http://blogs.zdnet.com/security/?p=2658 | http://isc.sans.org/diary.html?storyid=5923 | http://securitytracker.com/id?1021744 | http://www.microsoft.com/technet/security/advisory/968272.mspx | http://www.securityfocus.com/bid/33870 | http://www.symantec.com/business/security_response/writeup.jsp?docid=2009-022310-4202-99 | http://www.us-cert.gov/cas/techalerts/TA09-104A.html | http://www.vupen.com/english/advisories/2009/1023 | https://docs.microsoft.com/en-us/security-updates/securitybulletins/2009/ms09-009 | https://exchange.xforce.ibmcloud.com/vulnerabilities/48875 | https://oval.cisecurity.org/repository/search/definition/oval%3Aorg.mitre.oval%3Adef%3A5968 | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2009-0238
 
 ---
-**cveID:** CVE-2026-32201
+### cveID: CVE-2026-32201
 
 **vendorProject:** Microsoft
 
@@ -581,7 +628,7 @@
 **nistReferences:** https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-32201 | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-32201
 
 ---
-**cveID:** CVE-2012-1854
+### cveID: CVE-2012-1854
 
 **vendorProject:** Microsoft
 
@@ -610,7 +657,7 @@
 **nistReferences:** http://www.us-cert.gov/cas/techalerts/TA12-192A.html | https://docs.microsoft.com/en-us/security-updates/securitybulletins/2012/ms12-046 | https://oval.cisecurity.org/repository/search/definition/oval%3Aorg.mitre.oval%3Adef%3A14950 | http://www.us-cert.gov/cas/techalerts/TA12-192A.html | https://docs.microsoft.com/en-us/security-updates/securitybulletins/2012/ms12-046 | https://oval.cisecurity.org/repository/search/definition/oval%3Aorg.mitre.oval%3Adef%3A14950 | https://learn.microsoft.com/en-us/security-updates/SecurityBulletins/2012/ms12-046 | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2012-1854
 
 ---
-**cveID:** CVE-2025-60710
+### cveID: CVE-2025-60710
 
 **vendorProject:** Microsoft
 
@@ -639,7 +686,7 @@
 **nistReferences:** https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-60710 | https://www.vicarius.io/vsociety/posts/cve-2025-60710-detection-script-eop-vulnerability-in-host-process-for-windows-tasks | https://www.vicarius.io/vsociety/posts/cve-2025-60710-mitigation-script-eop-vulnerability-in-host-process-for-windows-tasks | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2025-60710
 
 ---
-**cveID:** CVE-2023-21529
+### cveID: CVE-2023-21529
 
 **vendorProject:** Microsoft
 
@@ -668,7 +715,7 @@
 **nistReferences:** https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21529 | https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21529 | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2023-21529 | https://www.microsoft.com/en-us/security/blog/2026/04/06/storm-1175-focuses-gaze-on-vulnerable-web-facing-assets-in-high-tempo-medusa-ransomware-operations/
 
 ---
-**cveID:** CVE-2023-36424
+### cveID: CVE-2023-36424
 
 **vendorProject:** Microsoft
 
@@ -697,7 +744,7 @@
 **nistReferences:** https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-36424 | https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-36424 | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2023-36424
 
 ---
-**cveID:** CVE-2020-9715
+### cveID: CVE-2020-9715
 
 **vendorProject:** Adobe
 
@@ -726,7 +773,7 @@
 **nistReferences:** https://blog.exodusintel.com/2021/04/20/analysis-of-a-use-after-free-vulnerability-in-adobe-acrobat-reader-dc/ | https://helpx.adobe.com/security/products/acrobat/apsb20-48.html | https://www.zerodayinitiative.com/advisories/ZDI-20-991/ | https://blog.exodusintel.com/2021/04/20/analysis-of-a-use-after-free-vulnerability-in-adobe-acrobat-reader-dc/ | https://helpx.adobe.com/security/products/acrobat/apsb20-48.html | https://www.zerodayinitiative.com/advisories/ZDI-20-991/ | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2020-9715
 
 ---
-**cveID:** CVE-2026-21643
+### cveID: CVE-2026-21643
 
 **vendorProject:** Fortinet
 
@@ -755,7 +802,7 @@
 **nistReferences:** https://fortiguard.fortinet.com/psirt/FG-IR-25-1142 | https://github.com/0xBlackash/CVE-2026-21643/blob/main/cve-2026-21643.py | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-21643
 
 ---
-**cveID:** CVE-2026-34621
+### cveID: CVE-2026-34621
 
 **vendorProject:** Adobe
 
@@ -784,7 +831,7 @@
 **nistReferences:** https://helpx.adobe.com/security/products/acrobat/apsb26-43.html | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-34621
 
 ---
-**cveID:** CVE-2026-1340
+### cveID: CVE-2026-1340
 
 **vendorProject:** Ivanti
 
@@ -813,7 +860,7 @@
 **nistReferences:** https://forums.ivanti.com/s/article/Security-Advisory-Ivanti-Endpoint-Manager-Mobile-EPMM-CVE-2026-1281-CVE-2026-1340 | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-1340
 
 ---
-**cveID:** CVE-2026-35616
+### cveID: CVE-2026-35616
 
 **vendorProject:** Fortinet
 
@@ -842,7 +889,7 @@
 **nistReferences:** https://fortiguard.fortinet.com/psirt/FG-IR-26-099 | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-35616
 
 ---
-**cveID:** CVE-2026-3502
+### cveID: CVE-2026-3502
 
 **vendorProject:** TrueConf
 
@@ -871,7 +918,7 @@
 **nistReferences:** https://trueconf.com/blog/update/trueconf-8-5 | https://research.checkpoint.com/2026/operation-truechaos-0-day-exploitation-against-southeast-asian-government-targets/ | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-3502
 
 ---
-**cveID:** CVE-2026-5281
+### cveID: CVE-2026-5281
 
 **vendorProject:** Google
 
