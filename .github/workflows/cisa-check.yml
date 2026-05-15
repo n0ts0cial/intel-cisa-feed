@@ -1,15 +1,15 @@
-# This is a basic workflow to help you get started with Actions
-
 name: Check CISA Vulnerabilities
 
-# Controls when the workflow will run
 on:
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
+  
 jobs:
   run-script:
     runs-on: ubuntu-latest
+
+    # Permissões necessárias para o bot do GitHub poder escrever no repositório
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout repository
@@ -18,5 +18,23 @@ jobs:
       - name: Run Vulnerability Script
         shell: pwsh
         run: |
-          # Importa a função e executa
+          # Importa e executa a função
           . ./intel-cisa-feed.ps1
+
+      - name: Commit and Push Report
+        run: |
+          # Configura o usuário do bot do GitHub
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Adiciona apenas os novos arquivos .md criados
+          git add *.md
+          
+          # Commita se houver alterações (evita erro se não houver vulnerabilidades no dia)
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -m "Auto-generated vulnerability report for $(date +%F)"
+            git push
+          else
+            echo "No changes to commit"
+          fi
+
