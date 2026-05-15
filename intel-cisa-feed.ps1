@@ -221,4 +221,4 @@ function Generate-MarkdownReport {
 # --- EXECUTION EXAMPLES ---
 Get-SpecificDateVulnerabilities
 Get-SpecificMonthVulnerabilities
-Get-VulnerabilitiesByRange -StartDate "2024-05-01" -EndDate "2024-05-15"
+#Get-VulnerabilitiesByRange -StartDate "2024-05-01" -EndDate "2024-05-15"
