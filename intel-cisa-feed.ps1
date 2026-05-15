@@ -69,6 +69,47 @@ function Get-SpecificMonthVulnerabilities {
     Generate-MarkdownReport -Data $Enriched -FileName "Monthly-Report-$TargetMonth.md" -Header "Monthly Vulnerability Summary: $TargetMonth"
 }
 
+# --- FUNCTION 3: RANGE REPORT (NEW) ---
+function Get-VulnerabilitiesByRange {
+    param (
+        [Parameter(Mandatory=$true)]
+        [datetime]$StartDate,
+        
+        [Parameter(Mandatory=$true)]
+        [datetime]$EndDate
+    )
+
+    $CsvFile = Join-Path -Path $PSScriptRoot -ChildPath "known_exploited_vulnerabilities.csv"
+
+    if (-not (Test-Path -Path $CsvFile)) {
+        Write-Error "CSV not found. Please run Get-SpecificDateVulnerabilities first to download the catalog."
+        return
+    }
+
+    $StartStr = $StartDate.ToString("yyyy-MM-dd")
+    $EndStr = $EndDate.ToString("yyyy-MM-dd")
+    Write-Host "INFO: Fetching vulnerabilities from $StartStr to $EndStr..." -ForegroundColor Cyan
+
+    $RawVulnerabilities = Import-Csv -Path $CsvFile
+    
+    # Filtragem por intervalo de datas convertendo a string do CSV para DateTime
+    $Filtered = $RawVulnerabilities | Where-Object {
+        $CurrentDate = [datetime]$_.dateAdded
+        $CurrentDate -ge $StartDate -and $CurrentDate -le $EndDate
+    }
+
+    if (-not $Filtered) {
+        Write-Host "INFO: No vulnerabilities found in the specified range." -ForegroundColor Yellow
+        return
+    }
+
+    Write-Host "INFO: Found $($Filtered.Count) vulnerabilities. Enriching data..." -ForegroundColor Gray
+    
+    $Enriched = Process-NistEnrichment -Vulnerabilities $Filtered
+    $FileName = "Range-Report-$($StartStr)-to-$($EndStr).md"
+    Generate-MarkdownReport -Data $Enriched -FileName $FileName -Header "Vulnerability Range Report: $StartStr to $EndStr"
+}
+
 # --- HELPER: NIST ENRICHMENT ---
 function Process-NistEnrichment {
     param ($Vulnerabilities)
@@ -96,7 +137,7 @@ function Process-NistEnrichment {
 
                 if ($null -ne $Cvss) {
                     $Vuln | Add-Member -MemberType NoteProperty -Name "baseScore" -Value $Cvss.cvssData.baseScore -Force
-                    $Vuln.baseSeverity = $Vuln.baseSeverity = $Cvss.cvssData.baseSeverity
+                    $Vuln.baseSeverity = $Cvss.cvssData.baseSeverity
                     $Vuln | Add-Member -MemberType NoteProperty -Name "exploitabilityScore" -Value $Cvss.exploitabilityScore -Force
                     $Vuln | Add-Member -MemberType NoteProperty -Name "impactScore" -Value $Cvss.impactScore -Force
                 }
@@ -114,7 +155,6 @@ function Generate-MarkdownReport {
     $ReportsFolder = Join-Path -Path $PSScriptRoot -ChildPath "reports"
     $MarkdownPath = Join-Path -Path $ReportsFolder -ChildPath $FileName
     
-    # Statistical calculations
     $TotalCount = @($Data).Count
     $CriticalCount = @($Data | Where-Object { $_.baseSeverity -eq "CRITICAL" }).Count
     $HighCount = @($Data | Where-Object { $_.baseSeverity -eq "HIGH" }).Count
@@ -122,10 +162,8 @@ function Generate-MarkdownReport {
     $LowCount = @($Data | Where-Object { $_.baseSeverity -eq "LOW" }).Count
     $PocCount = @($Data | Where-Object { $_.hasPublicExploit -eq "Yes" }).Count
 
-    # Unique products sorted alphabetically
     $AffectedProducts = @($Data.product | Select-Object -Unique | Where-Object { $_ -ne $null -and $_ -ne "" } | Sort-Object)
 
-    # Intro Alert
     $IntroAlert = "This vulnerability has been added to the CISA Known Exploited Vulnerabilities (KEV) Catalog."
     if ($TotalCount -gt 1) {
         $IntroAlert = "These vulnerabilities have been added to the CISA Known Exploited Vulnerabilities (KEV) Catalog."
@@ -137,7 +175,6 @@ function Generate-MarkdownReport {
     $Content.Add($IntroAlert)
     $Content.Add("")
     
-    # Executive Summary Section
     $Content.Add("## Executive Summary")
     $Content.Add("This section provides a high-level overview of the vulnerabilities recently identified and added to the CISA Known Exploited Vulnerabilities (KEV) catalog. The table below summarizes the critical metrics and the overall risk landscape for this reporting period.")
     $Content.Add("")
@@ -151,7 +188,6 @@ function Generate-MarkdownReport {
     $Content.Add("| **Public Exploit (PoC) Available** | $PocCount |")
     $Content.Add("")
 
-    # Affected Products Section (H3)
     $Content.Add("### Affected Products")
     $Content.Add("Here is the list of affected products included in this report:")
     $Content.Add("")
@@ -160,7 +196,6 @@ function Generate-MarkdownReport {
     }
     $Content.Add("")
 
-    # Detailed Findings Section
     $Content.Add("## Detailed Findings")
     $Content.Add("Technical details for each identified CVE, including product impact, CVSS enrichment from the NIST NVD, and specific required actions.")
     $Content.Add("")
@@ -183,6 +218,7 @@ function Generate-MarkdownReport {
     Write-Host "SUCCESS: Report generated at $MarkdownPath" -ForegroundColor Green
 }
 
-# --- EXECUTION ---
+# --- EXECUTION EXAMPLES ---
 Get-SpecificDateVulnerabilities
 Get-SpecificMonthVulnerabilities
+Get-VulnerabilitiesByRange -StartDate "2024-05-01" -EndDate "2024-05-15"
