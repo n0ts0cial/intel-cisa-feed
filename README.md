@@ -4,45 +4,114 @@ Automated Threat Intelligence tool that monitors, enriches, and reports on the l
 
 ## 🚀 Overview
 
-This project provides a fully automated pipeline to track active threats. Every day, a GitHub Action triggers a PowerShell script that:
+This project provides an automated pipeline to track active threats. Every day, a GitHub Action triggers a PowerShell script that:
+
 1. **Fetches** the latest KEV catalog from CISA.
-2. **Filters** for vulnerabilities added on the previous day.
+    
+2. **Filters** data by specific date, month, or custom range.
+    
 3. **Enriches** the data by querying the **NIST National Vulnerability Database (NVD) API** to retrieve CVSS scores, severity levels, and public exploit references.
-4. **Generates** a clean Markdown report in the `reports/` directory.
+    
+4. **Generates** clean Markdown reports in the `reports/` directory with an executive summary and technical details.
+    
 
 ## 🛠️ Technology Stack
 
 - **Language:** PowerShell (Core)
+    
 - **Automation:** GitHub Actions (CI/CD)
+    
 - **Data Sources:** CISA KEV Catalog & NIST NVD API
+    
 - **Output:** Markdown (.md) reports
+    
+
+## 📖 Usage & Functions
+
+The script `Intel-CISA-Feed.ps1` supports the following reporting modes:
+
+### Daily Report
+
+Checks for vulnerabilities added on a specific date (default: yesterday).
+
+PowerShell
+
+```
+Get-SpecificDateVulnerabilities -TargetDate "2026-05-10"
+```
+
+### Monthly Summary
+
+Aggregates all vulnerabilities added during a specific month.
+
+PowerShell
+
+```
+Get-SpecificMonthVulnerabilities -TargetMonth "2026-04"
+```
+
+### Custom Range
+
+Generates a report between two specific dates.
+
+PowerShell
+
+```
+Get-VulnerabilitiesByRange -StartDate "2026-05-01" -EndDate "2026-05-15"
+```
 
 ## 📋 Report Structure
 
-Each generated report includes the following fields in order:
+Each report includes an **Executive Summary** table (Severity counts) and detailed findings with:
+
 - `cveID`: The standard CVE identifier.
+    
 - `vendorProject` & `product`: Affected software or hardware.
+    
 - `vulnerabilityName`: Brief title of the flaw.
+    
 - `shortDescription`: Context on how the vulnerability works.
+    
 - `dateAdded`: When it was officially added to the KEV.
+    
 - `baseSeverity` & `baseScore`: CVSS v3.x risk metrics.
+    
 - `exploitabilityScore` & `impactScore`: Technical breakdown of the risk.
+    
 - `hasPublicExploit`: Identification of public PoCs or exploit code.
+    
 - `requiredAction`: CISA's recommended mitigation steps.
+    
 - `notes`: Additional context or ransomware campaign association.
+    
 - `nistReferences`: Direct links to official security advisories.
+    
 
 ## 🤖 Automation Schedule
 
 The feed is configured to run automatically via GitHub Actions:
+
 - **Schedule:** Daily at `03:00 AM UTC`.
-- **Manual Trigger:** Can be executed manually via the `workflow_dispatch` event in the Actions tab.
+    
+- **Manual Trigger:** Can be executed via `workflow_dispatch`.
+    
 
 ## 📂 Project Structure
 
-```text
+Plaintext
+
+```
 ├── .github/workflows/
 │   └── check-vulnerabilities.yml  # GitHub Actions CI/CD configuration
-├── reports/                        # History of generated daily reports
-├── intel-cisa-feed.ps1             # Main PowerShell logic
+├── reports/                        # History of generated daily/monthly/range reports
+├── Intel-CISA-Feed.ps1             # Main PowerShell logic
 └── README.md                       # Project documentation
+```
+
+## 👤 Author
+
+**Bruno Ricci**
+
+- **Website:** [techexpert.tips](https://techexpert.tips)
+    
+- **LinkedIn:** [linkedin.com/in/brunoricci/](https://www.linkedin.com/in/brunoricci/)
