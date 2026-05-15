@@ -127,5 +127,5 @@ function Get-SpecificDateVulnerabilities {
 }
 
 # --- EXECUTION ---
-Get-SpecificDateVulnerabilities -TargetDate "2024-05-14"
-Get-SpecificDateVulnerabilities -TargetDate "2026-05-15" 
+# This will now run for "yesterday" every time the script is called
+Get-SpecificDateVulnerabilities
