@@ -18,11 +18,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6.0.2
-
+        
+      # Import and execute the script (ensure function call is at the end of the .ps1)# Import and execute the script (ensure function call is at the end of the .ps1)
       - name: Run Vulnerability Script
         shell: pwsh
         run: |
-          # Import and execute the script (ensure function call is at the end of the .ps1)
           . ./intel-cisa-feed.ps1
 
       - name: Commit and Push Report
