@@ -10,7 +10,7 @@ This section provides a high-level overview of the vulnerabilities recently iden
 | **Total Vulnerabilities** | 1 |
 | **Critical Severity** | 0 |
 | **High Severity** | 0 |
-| **Medium Severity** | 0 |
+| **Medium Severity** | 1 |
 | **Low Severity** | 0 |
 | **Public Exploit (PoC) Available** | 0 |
 
@@ -35,7 +35,19 @@ Technical details for each identified CVE, including product impact, CVSS enrich
 
 **dateAdded:** 2026-05-22
 
+**baseSeverity:** MEDIUM
+
+**baseScore:** 6.5
+
+**exploitabilityScore:** 3.9
+
+**impactScore:** 2.5
+
+**hasPublicExploit:** No
+
 **requiredAction:** Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.
 
 **notes:** https://www.drupal.org/sa-core-2026-004 ; https://nvd.nist.gov/vuln/detail/CVE-2026-9082
+
+**nistReferences:** https://www.drupal.org/sa-core-2026-004
 
