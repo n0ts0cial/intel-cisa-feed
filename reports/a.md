@@ -3,7 +3,7 @@
 This vulnerability has been added to the CISA Known Exploited Vulnerabilities (KEV) Catalog.
 
 ## Executive Summary
-This section provides a high-level overview of the vulnerabilities recently identified.
+This section provides a high-level overview of the vulnerabilities recently identified and added to the CISA Known Exploited Vulnerabilities (KEV) catalog. The table below summarizes the critical metrics and the overall risk landscape for this reporting period.
 
 | Metric | Value |
 | :--- | :--- |
@@ -15,10 +15,12 @@ This section provides a high-level overview of the vulnerabilities recently iden
 | **Public Exploit (PoC) Available** | 0 |
 
 ### Affected Products
+Here is the list of affected products included in this report:
 
 * Core
 
 ## Detailed Findings
+Technical details for each identified CVE, including product impact, CVSS enrichment from the NIST NVD, and specific required actions.
 
 ---
 ### cveID: CVE-2026-9082
