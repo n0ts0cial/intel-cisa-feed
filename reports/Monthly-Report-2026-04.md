@@ -132,7 +132,7 @@ Technical details for each identified CVE, including product impact, CVSS enrich
 
 **notes:** https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2026-32202 ; https://nvd.nist.gov/vuln/detail/CVE-2026-32202
 
-**nistReferences:** https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-32202 | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-32202
+**nistReferences:** https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-32202 | https://www.vicarius.io/vsociety/posts/cve-2026-32202-detection-script-spoofing-vulnerability-in-windows-shell | https://www.vicarius.io/vsociety/posts/cve-2026-32202-mitigation-script-spoofing-vulnerability-in-windows-shell | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-32202
 
 ---
 ### cveID: CVE-2025-29635
