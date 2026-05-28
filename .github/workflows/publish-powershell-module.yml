@@ -1,0 +1,26 @@
+name: Publish PowerShell Module
+
+on:
+  # Allows manual triggering from the GitHub Actions tab
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Check out the repository code
+      - name: Checkout repository
+        uses: actions/checkout@v6.0.2
+
+      # Publish the module located in the IntelCisaFeed directory to PSGallery
+      # Ensure NUGET_API_KEY is stored in GitHub Repository Secrets
+      - name: Publish Module to PowerShell Gallery
+        shell: pwsh
+        env:
+          NUGET_API_KEY: ${{ secrets.TMP_API_KEY }}
+        run: |
+          # Publish the module folder. 
+          # The -Force flag ensures overwriting if necessary, 
+          # though PSGallery requires a unique ModuleVersion in the manifest for each publish.
+          Publish-Module -Path ./IntelCisaFeed -NuGetApiKey $env:TMP_API_KEY -Force
