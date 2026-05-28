@@ -22,7 +22,25 @@ This project provides an automated pipeline to track active threats. Every day, 
 
 ## 📖 Usage & Functions
 
-The script `Intel-CISA-Feed.ps1` supports the following reporting modes:
+Perform the installation of the Powershell module.
+
+```
+Install-Module -Name IntelCisaFeed -Scope CurrentUser
+```
+
+Perform the update of the Powershell module.
+
+```
+Update-Module -Name IntelCisaFeed -Force
+```
+
+List the available functions of the module.
+
+```
+Get-Command -Module IntelCisaFeed
+```
+
+The script/module supports the following reporting modes:
 
 ### Daily Report
 
