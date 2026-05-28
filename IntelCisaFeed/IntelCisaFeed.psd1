@@ -1,5 +1,5 @@
 @{
-    ModuleVersion = '1.0.0'
+    ModuleVersion = '0.0.1'
     GUID = '5d4f3b2a-1234-4567-89ab-cdef01234567'
     Author = 'Bruno Ricci'
     CompanyName = 'TechExpert'
