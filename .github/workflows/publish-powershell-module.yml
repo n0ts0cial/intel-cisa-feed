@@ -18,7 +18,7 @@ jobs:
       - name: Publish Module to PowerShell Gallery
         shell: pwsh
         env:
-          NUGET_API_KEY: ${{ secrets.TMP_API_KEY }}
+          TMP_API_KEY: ${{ secrets.TMP_API_KEY }}
         run: |
           # Publish the module folder. 
           # The -Force flag ensures overwriting if necessary, 
