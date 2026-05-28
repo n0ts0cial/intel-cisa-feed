@@ -23,7 +23,7 @@ jobs:
       - name: Run Vulnerability Script
         shell: pwsh
         run: |
-          . ./intel-cisa-feed.ps1
+          . ./IntelCisaFeed.ps1
 
       - name: Commit and Push Report
         run: |
