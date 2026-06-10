@@ -66,7 +66,7 @@ Technical details for each identified CVE, including product impact, CVSS enrich
 
 **notes:** https://security.paloaltonetworks.com/CVE-2026-0257 ; https://nvd.nist.gov/vuln/detail/CVE-2026-0257
 
-**nistReferences:** https://security.paloaltonetworks.com/CVE-2026-0257 | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-0257
+**nistReferences:** https://security.paloaltonetworks.com/CVE-2026-0257 | https://cert-portal.siemens.com/productcert/html/ssa-967325.html | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-0257
 
 ---
 ### cveID: CVE-2026-48027
@@ -588,7 +588,7 @@ Technical details for each identified CVE, including product impact, CVSS enrich
 
 **notes:** https://hub.ivanti.com/s/article/May-2026-Security-Advisory-Ivanti-Endpoint-Manager-Mobile-EPMM-Multiple-CVEs?language=en_US ; https://nvd.nist.gov/vuln/detail/CVE-2026-6973
 
-**nistReferences:** https://hub.ivanti.com/s/article/May-2026-Security-Advisory-Ivanti-Endpoint-Manager-Mobile-EPMM-Multiple-CVEs?language=en_US | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-6973
+**nistReferences:** https://hub.ivanti.com/s/article/Security-Advisory-Ivanti-Endpoint-Manager-Mobile-EPMM-CVE-2026-6973-CVE-2026-10727?language=en_US | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-6973
 
 ---
 ### cveID: CVE-2026-0300
