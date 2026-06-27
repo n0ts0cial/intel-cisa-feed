@@ -559,7 +559,7 @@ Technical details for each identified CVE, including product impact, CVSS enrich
 
 **notes:** https://github.com/BerriAI/litellm/security/advisories/GHSA-r75f-5x8p-qvmc ; https://nvd.nist.gov/vuln/detail/CVE-2026-42208
 
-**nistReferences:** https://github.com/BerriAI/litellm/releases/tag/v1.83.7-stable | https://github.com/BerriAI/litellm/security/advisories/GHSA-r75f-5x8p-qvmc | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-42208
+**nistReferences:** https://github.com/BerriAI/litellm/releases/tag/v1.83.7-stable | https://github.com/BerriAI/litellm/security/advisories/GHSA-r75f-5x8p-qvmc | https://access.redhat.com/security/cve/CVE-2026-42208 | https://bugzilla.redhat.com/show_bug.cgi?id=2463965 | https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-42208.json | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-42208
 
 ---
 ### cveID: CVE-2026-6973
