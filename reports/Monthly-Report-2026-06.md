@@ -155,7 +155,7 @@ Technical details for each identified CVE, including product impact, CVSS enrich
 
 **notes:** https://ltrxdev.atlassian.net/wiki/spaces/LTRXTS/pages/2538438657/Latest+Firmware+for+the+EDS5000+series+EDS5008+EDS5016+EDS5032 ; BOD 26-04: https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk ; Forensics Triage Requirements: https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk ; https://nvd.nist.gov/vuln/detail/CVE-2025-67038
 
-**nistReferences:** http://eds5000.com | http://lantronix.com | https://www.cisa.gov/news-events/ics-advisories/icsa-26-069-02 | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2025-67038
+**nistReferences:** http://eds5000.com | https://www.cisa.gov/news-events/ics-advisories/icsa-26-069-02 | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2025-67038
 
 ---
 ### cveID: CVE-2026-34910
