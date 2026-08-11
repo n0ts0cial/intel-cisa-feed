@@ -143,11 +143,11 @@ Technical details for each identified CVE, including product impact, CVSS enrich
 
 **baseSeverity:** CRITICAL
 
-**baseScore:** 9.1
+**baseScore:** 9.8
 
 **exploitabilityScore:** 3.9
 
-**impactScore:** 5.2
+**impactScore:** 5.9
 
 **hasPublicExploit:** No
 
