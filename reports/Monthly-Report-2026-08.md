@@ -655,7 +655,7 @@ Technical details for each identified CVE, including product impact, CVSS enrich
 
 **notes:** https://support.apple.com/en-us/148170; https://support.apple.com/en-us/148171; https://support.apple.com/en-us/148172 ; BOD 26-04: https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk ; Forensics Triage Requirements: https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk ; https://nvd.nist.gov/vuln/detail/CVE-2026-65400
 
-**nistReferences:** https://support.apple.com/en-us/148170 | https://support.apple.com/en-us/148171 | https://support.apple.com/en-us/148172 | http://seclists.org/fulldisclosure/2026/Aug/36 | http://seclists.org/fulldisclosure/2026/Aug/37 | https://advisories.ncsc.nl/2026/ncsc-2026-0280.html | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-65400
+**nistReferences:** https://support.apple.com/en-us/148170 | https://support.apple.com/en-us/148171 | https://support.apple.com/en-us/148172 | https://support.apple.com/en-us/149035 | https://support.apple.com/en-us/149042 | http://seclists.org/fulldisclosure/2026/Aug/36 | http://seclists.org/fulldisclosure/2026/Aug/37 | https://advisories.ncsc.nl/2026/ncsc-2026-0280.html | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-65400
 
 ---
 ### cveID: CVE-2025-62593
