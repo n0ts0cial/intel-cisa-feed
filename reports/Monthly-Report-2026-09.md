@@ -105,7 +105,7 @@ Technical details for each identified CVE, including product impact, CVSS enrich
 
 **notes:** https://support.apple.com/en-us/149226 ; https://support.apple.com/en-us/149228 ; https://support.apple.com/en-us/149229 ; BOD 26-04: https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk ; Forensics Triage Requirements: https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk ; https://nvd.nist.gov/vuln/detail/CVE-2026-86950
 
-**nistReferences:** https://support.apple.com/en-us/149226 | https://support.apple.com/en-us/149228 | https://support.apple.com/en-us/149229 | http://seclists.org/fulldisclosure/2026/Sep/89 | http://seclists.org/fulldisclosure/2026/Sep/90 | http://seclists.org/fulldisclosure/2026/Sep/91 | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-86950
+**nistReferences:** https://support.apple.com/en-us/149225 | https://support.apple.com/en-us/149226 | https://support.apple.com/en-us/149228 | https://support.apple.com/en-us/149229 | http://seclists.org/fulldisclosure/2026/Sep/89 | http://seclists.org/fulldisclosure/2026/Sep/90 | http://seclists.org/fulldisclosure/2026/Sep/91 | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-86950
 
 ---
 ### cveID: CVE-2026-88772
