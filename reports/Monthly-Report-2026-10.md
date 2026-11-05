@@ -10,7 +10,7 @@ This section provides a high-level overview of the vulnerabilities recently iden
 | **Total Vulnerabilities** | 36 |
 | **Critical Severity** | 13 |
 | **High Severity** | 15 |
-| **Medium Severity** | 6 |
+| **Medium Severity** | 7 |
 | **Low Severity** | 1 |
 | **Public Exploit (PoC) Available** | 5 |
 
@@ -61,13 +61,21 @@ Technical details for each identified CVE, including product impact, CVSS enrich
 
 **dateAdded:** 2026-10-30
 
-**baseSeverity:** UNKNOWN
+**baseSeverity:** MEDIUM
+
+**baseScore:** 4.3
+
+**exploitabilityScore:** 2.8
+
+**impactScore:** 1.4
 
 **hasPublicExploit:** No
 
 **requiredAction:** Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable. Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines.
 
 **notes:** https://hub.ivanti.com/s/article/Security-Advisory-Ivanti-Connect-Secure-CVE-2026-104935?language=en_US ; ; BOD 26-04: https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk ; Forensics Triage Requirements: https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk ; https://nvd.nist.gov/vuln/detail/CVE-2026-118527
+
+**nistReferences:** https://hub.ivanti.com/s/article/Security-Advisory-Ivanti-Connect-Secure-CVE-2026-104935?language=en_US | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-118527
 
 ---
 ### cveID: CVE-2026-111357
@@ -270,7 +278,7 @@ Technical details for each identified CVE, including product impact, CVSS enrich
 
 **notes:** This vulnerability affects an open-source component, third-party library, protocol, or proprietary implementation that could be used by different products. For more information, please see: https://github.com/google/brotli/releases/tag/v1.2.1 ; ; BOD 26-04: https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk ; Forensics Triage Requirements: https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk ; https://nvd.nist.gov/vuln/detail/CVE-2026-111497
 
-**nistReferences:** https://github.com/andybalholm/brotli/releases/tag/v1.2.7 | https://nodejs.org/en/blog/vulnerability/october-2026-security-releases#nodejs-brotli-decoder-out-of-bounds-write-permits-remote-code-execution-cve-2026-111497---high | http://www.openwall.com/lists/oss-security/2026/10/23/25 | http://www.openwall.com/lists/oss-security/2026/10/24/6 | http://www.openwall.com/lists/oss-security/2026/10/26/12 | http://www.openwall.com/lists/oss-security/2026/10/26/13 | http://www.openwall.com/lists/oss-security/2026/10/26/16 | https://broccoli2shell.com | https://github.com/advisories/GHSA-9v8h-qqgm-4m35 | https://github.com/dotnet/announcements/issues/494 | https://github.com/google/brotli/releases/tag/v1.0.10 | https://github.com/google/brotli/releases/tag/v1.1.1 | https://github.com/google/brotli/releases/tag/v1.2.1 | https://lists.debian.org/debian-lts-announce/2026/10/msg00049.html | https://patchtheplanet.org/brotli | https://www.aikido.dev/blog/node2shell-nodejs-brotli-rce-cve-2026-111497 | https://cert-portal.siemens.com/productcert/html/ssa-045512.html | https://cert-portal.siemens.com/productcert/html/ssa-443410.html | https://cert-portal.siemens.com/productcert/html/ssa-898633.html | https://ellio.tech/en/blog/node2shell-cve-2026-111497-rce-on-stock-nodejs-builds/ | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-111497
+**nistReferences:** https://github.com/andybalholm/brotli/releases/tag/v1.2.7 | https://nodejs.org/en/blog/vulnerability/october-2026-security-releases#nodejs-brotli-decoder-out-of-bounds-write-permits-remote-code-execution-cve-2026-111497---high | http://www.openwall.com/lists/oss-security/2026/10/23/25 | http://www.openwall.com/lists/oss-security/2026/10/24/6 | http://www.openwall.com/lists/oss-security/2026/10/26/12 | http://www.openwall.com/lists/oss-security/2026/10/26/13 | http://www.openwall.com/lists/oss-security/2026/10/26/16 | http://www.openwall.com/lists/oss-security/2026/11/03/2 | https://broccoli2shell.com | https://github.com/advisories/GHSA-9v8h-qqgm-4m35 | https://github.com/dotnet/announcements/issues/494 | https://github.com/google/brotli/releases/tag/v1.0.10 | https://github.com/google/brotli/releases/tag/v1.1.1 | https://github.com/google/brotli/releases/tag/v1.2.1 | https://lists.debian.org/debian-lts-announce/2026/10/msg00049.html | https://patchtheplanet.org/brotli | https://www.aikido.dev/blog/node2shell-nodejs-brotli-rce-cve-2026-111497 | https://cert-portal.siemens.com/productcert/html/ssa-045512.html | https://cert-portal.siemens.com/productcert/html/ssa-443410.html | https://cert-portal.siemens.com/productcert/html/ssa-898633.html | https://ellio.tech/en/blog/node2shell-cve-2026-111497-rce-on-stock-nodejs-builds/ | https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-111497
 
 ---
 ### cveID: CVE-2026-109618
