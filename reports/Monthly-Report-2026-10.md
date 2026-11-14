@@ -521,7 +521,7 @@ Technical details for each identified CVE, including product impact, CVSS enrich
 
 **vulnerabilityName:** Plex Media Server Server-Side Request Forgery (SSRF) Vulnerability
 
-**shortDescription:** Plex Media Server contains a server-side request forgery (SSRF) vulnerability which could allow an attacker using any X-Plex-Token value to include a full URL in the 'protocol' parameter and force the Plex server to POST to the attacker's chosen destination. This vulnerability can be chained with CVE-2026-96654, CVE-2026-96655, and CVE-2026-96656. 
+**shortDescription:** Plex Media Server contains a server-side request forgery (SSRF) vulnerability which could allow an attacker using any X-Plex-Token value to include a full URL in the 'protocol' parameter and force the Plex server to POST to the attacker's chosen destination. This vulnerability can be chained with CVE-2026-96654, CVE-2026-96655, and CVE-2026-96656.
 
 **dateAdded:** 2026-10-20
 
@@ -838,7 +838,7 @@ Technical details for each identified CVE, including product impact, CVSS enrich
 
 **product:** BIND
 
-**vulnerabilityName:**  ISC BIND Data Processing Errors Vulnerability
+**vulnerabilityName:** ISC BIND Data Processing Errors Vulnerability
 
 **shortDescription:** ISC BIND contains a data processing errors vulnerability that could allow remote attackers to cause a denial of service via TKEY queries.
 
@@ -898,7 +898,7 @@ Technical details for each identified CVE, including product impact, CVSS enrich
 
 **vulnerabilityName:** Strapi Cleartext Storage of Sensitive Information Vulnerability
 
-**shortDescription:** Strapi contains a cleartext storage of sensitive information vulnerability that could allow attackers with access to the admin panel to discover sensitive user details via the query filter. The impacted product(s) could be end-of-life (EoL) and/or end-of-service (EoS). Users are advised to discontinue use and/or transition to a supported version. This vulnerability can be chained with CVE-2023-22621 to achieve remote code execution. 
+**shortDescription:** Strapi contains a cleartext storage of sensitive information vulnerability that could allow attackers with access to the admin panel to discover sensitive user details via the query filter. The impacted product(s) could be end-of-life (EoL) and/or end-of-service (EoS). Users are advised to discontinue use and/or transition to a supported version. This vulnerability can be chained with CVE-2023-22621 to achieve remote code execution.
 
 **dateAdded:** 2026-10-08
 
